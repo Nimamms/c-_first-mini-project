@@ -18,19 +18,26 @@
         }
 
         public List<User> all_users = new List<User>();
+        
+        
         public void sign_up(string name, string email, string password, int cash)
         {
             all_users.Add(new User(name, false, email, password, cash));
         }
 
-        public void sign_in(string name, string email, string password, int cash)
+        public void sign_in(string name, string password )
         {
+            User Nima = new User("Nima",true,"Nima@gmail.com","123",10000);
+            bool flag = false;
+            all_users.Add(Nima);
             for (int i = 0; i < all_users.Count; i++)
             {
                 if (all_users[i].P_Name == name && all_users[i].P_Password == password)
                 {
+                    flag = true;
                     if(all_users[i].P_is_admin==true)
                     {
+                        Console.WriteLine("is admin \n");
                         // admin_window();
                     }
                     else
@@ -39,7 +46,11 @@
                     }
                 }
             }
-            Console.WriteLine(" your name or password is incorrect.");
+
+            if (!flag)
+            {
+                Console.WriteLine(" your name or password is incorrect.");
+            }
         }
 
 
