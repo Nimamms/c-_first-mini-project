@@ -1,12 +1,15 @@
-﻿using DotNetHW2;
+﻿using Service;
 
-public class Program
+namespace UserInterface;
+
+public abstract class Program
 { 
     public static void Main(string[] args)
     {
-        User User_test = new User(" ",false,"","",0);
+        ItemService userTest = new ItemService();
+        if (userTest == null) throw new ArgumentNullException(nameof(userTest));
 
-        
+
         while (true)
         {
             Console.WriteLine("              1-sign in \n" +
@@ -19,7 +22,7 @@ public class Program
                 Console.WriteLine("password : \n");
                 string pass = Console.ReadLine();
                 
-                User_test.sign_in(name , pass);
+                userTest.sign_in(name , pass);
             }
             else if (inp == "2")
             {
@@ -32,7 +35,7 @@ public class Program
                 Console.WriteLine("cash : \n");
                 string inpp = Console.ReadLine();
                 int l_cash = Convert.ToInt32(inpp);
-                User_test.sign_up(name, pass, gmail, l_cash);
+                userTest.sign_up(name, pass, gmail, l_cash);
                 Console.WriteLine("you added successfully \n");
                 
             }
